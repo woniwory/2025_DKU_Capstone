@@ -1,4 +1,9 @@
 # 2025_DKU_Capstone
+자동 채점 프로그램
+
+AI - 정다훈, 오유석
+Frontend - 공서연
+Backend - 정성원
 
 ## AI, Front, Backend Branch 관리
 AI, Front, Backend를 세 분야로 나누어 관리중
