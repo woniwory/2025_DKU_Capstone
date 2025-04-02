@@ -24,7 +24,7 @@ public class UserController {
         String password = signUpDto.getPassword();
         String name = signUpDto.getName();
         String result = userService.UserSignup(email,password,name);
-        log.info("회원가입 결과 :"+result);
+        log.info("회원가입 결과 :"+ result);
         return result;
     }
 

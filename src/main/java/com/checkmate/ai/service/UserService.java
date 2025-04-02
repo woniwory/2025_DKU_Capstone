@@ -34,7 +34,7 @@ public class UserService {
         User User = new User(email, password,name);
         userRepository.save(User);
         System.out.println(userRepository.findByEmail(email));
-        return "sign up";
+        return "완료";
 
     }
 
