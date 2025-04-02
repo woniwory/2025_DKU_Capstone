@@ -10,6 +10,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,15 +46,24 @@ public class UserService {
     }
 
     @Transactional
-    public JwtToken signIn(String email, String password) { // ✅ email로 변경
+    public JwtToken signIn(String email, String rawPassword) { // ✅ email로 로그인
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("이메일을 찾을 수 없습니다."));
+
+        // ✅ 비밀번호 검증 (평문 vs 암호화된 비밀번호 비교)
+        if (!passwordEncoder.matches(rawPassword, user.getPassword())) {
+            throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
+        }
+
+        // Spring Security 인증 처리
         UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(email, password); // ✅ email 사용
+                new UsernamePasswordAuthenticationToken(email, rawPassword);
 
         Authentication authentication;
         try {
             authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
         } catch (BadCredentialsException e) {
-            e.printStackTrace();
+            log.error("인증 실패: {}", e.getMessage());
             return null;
         }
 
