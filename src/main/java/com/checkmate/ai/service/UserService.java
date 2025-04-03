@@ -1,10 +1,13 @@
 package com.checkmate.ai.service;
 
+import com.checkmate.ai.dto.CustomUserDetails;
 import com.checkmate.ai.dto.JwtToken;
+import com.checkmate.ai.dto.UserDto;
 import com.checkmate.ai.entity.User;
 import com.checkmate.ai.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -32,7 +35,7 @@ public class UserService {
 
 
     @Transactional
-    public String signUp(String email, String password, String name) {
+    public String UserSignup(String email, String password, String name) {
         if (userRepository.findByEmail(email).isPresent()) {
             return "User ID already exists!";
         }
@@ -46,7 +49,7 @@ public class UserService {
     }
 
     @Transactional
-    public JwtToken signIn(String email, String rawPassword) { // ✅ email로 로그인
+    public JwtToken UserSignin(String email, String rawPassword) { // ✅ email로 로그인
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("이메일을 찾을 수 없습니다."));
 
@@ -74,6 +77,24 @@ public class UserService {
         return jwtTokenProvider.generateToken(authentication);
     }
 
+    public UserDto getUser() {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        Optional<User> currentOptionalUser = userRepository.findByEmail(userDetails.getEmail());
+
+        if(currentOptionalUser.isEmpty()){
+            log.info("조회된 User가 없습니다");
+            return null;
+        }
+        // 현재 멤버의 objectId를 가져옴
+
+        User currntUser = currentOptionalUser.get();
+
+        return new UserDto(currntUser.getEmail(), currntUser.getName());
+    }
+
+
 
     public List<User> getAllUsers(){
         return userRepository.findAll();
@@ -82,4 +103,6 @@ public class UserService {
     public void deleteAll() {
         userRepository.deleteAll();
     }
+
+
 }
