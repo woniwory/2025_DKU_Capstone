@@ -25,11 +25,11 @@ public class User{
     private String password;
 
     private String name;
-
     @CreatedDate
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
+
     @LastModifiedDate
-    private LocalDateTime updatedAt;
+    private LocalDateTime update_at;
 
     public User(String email, String password, String name) {
         this.email = email;

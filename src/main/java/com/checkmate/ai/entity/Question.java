@@ -9,11 +9,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Question {
 
-    private int questionNumber; // 문제 번호
-
-    private String questionText; // 문제 내용
-
-    private String correctAnswer; // 정답 (예: "A", "B" 등)
-
-    private int allocatedScore; // 배점
+    private int question_number;
+    private String question_type; // e.g. "short_answer", "TF", "descriptive"
+    private int sub_question_number; // optional (null 허용)
+    private String answer;
+    private int allocated_score;
 }

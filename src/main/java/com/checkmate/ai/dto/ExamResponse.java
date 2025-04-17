@@ -1,4 +1,4 @@
-package com.checkmate.ai.entity;
+package com.checkmate.ai.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,10 +8,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 
-public class Response {
-    private int questionNumber;
-    private String studentAnswer;
+public class ExamResponse {
+    private int question_number;
+    private String student_answer;
     private int confidence;
-    private boolean isCorrect;
+    private boolean is_correct;
     private int score;
 }
