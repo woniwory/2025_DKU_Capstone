@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket & HTTP Test</title>
+</head>
+<body>
+    <h1>Upload Image via HTTP</h1>
+    <input type="file" id="fileInput" />
+    <button onclick="uploadImage()">Upload Image</button>
+
+    <h1>Send Message via WebSocket</h1>
+    <input type="text" id="messageInput" placeholder="Enter message" />
+    <button onclick="sendMessage()">Send Message</button>
+
+    <h1>Request Image + Text via WebSocket</h1>
+    <input type="text" id="imageRequestInput" placeholder="Enter image filename" />
+    <button onclick="requestImage()">Request Image</button>
+
+    <div id="imageDisplay"></div>
+
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+    <script>
+        const socket = io('http://localhost:5000');  // WebSocket 연결
+
+        // 연결 확인
+        socket.on('connect', function () {
+            console.log('WebSocket 연결됨');
+        });
+
+        // 메시지 전송
+        function sendMessage() {
+            const message = document.getElementById('messageInput').value;
+            const sender = 'User1';
+            socket.emit('send_message', { message, sender });
+        }
+
+        // 메시지 응답 수신
+        socket.on('message_response', function (data) {
+            alert('서버 응답: ' + data.message);
+        });
+
+        // 이미지 업로드 (HTTP)
+        function uploadImage() {
+            const file = document.getElementById('fileInput').files[0];
+            const formData = new FormData();
+            formData.append('image', file);
+
+            fetch('http://localhost:5000/upload-image', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => {
+                console.error('Error uploading image:', error);
+            });
+        }
+
+        // 이미지 요청 (WebSocket)
+        function requestImage() {
+            const imageFilename = document.getElementById('imageRequestInput').value;
+            socket.emit('image_request', { filename: imageFilename });
+        }
+
+        // 이미지 + 텍스트 응답 처리
+        socket.on('image_response', function (data) {
+            const imageContainer = document.getElementById('imageDisplay');
+            imageContainer.innerHTML = '';
+
+            if (data.error) {
+                alert(data.error);
+            } else {
+                // 이미지 출력
+                const image = new Image();
+                image.src = 'data:image/png;base64,' + data.image;
+                image.style.maxWidth = '300px';
+
+                // 텍스트 데이터 출력
+                const text = document.createElement('p');
+                text.textContent = data.text_data;
+
+                imageContainer.appendChild(image);
+                imageContainer.appendChild(text);
+            }
+        });
+    </script>
+</body>
+</html>
