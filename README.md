@@ -91,9 +91,8 @@ checkmate/
 │   │   └── ...
 │   ├── 📁 public/                     # 정적 파일
 │   ├── package.json                   # 프로젝트 의존성
-│   ├── tailwind.config.js            # Tailwind CSS 설정
-│   ├── compose.yml                    # Docker Compose 설정
-│   └── README.md
+│   ├── tailwind.config.js             # Tailwind CSS 설정
+│   └── compose.yml                    # Docker Compose 설정
 │
 ├── 📁 BACKEND/                        # 백엔드 (Spring Boot)
 │   ├── 📁 src/
@@ -103,8 +102,7 @@ checkmate/
 │   ├── 📁 gradle/                     # Gradle 래퍼
 │   ├── build.gradle                   # Gradle 빌드 설정
 │   ├── Dockerfile                     # Docker 이미지 빌드 설정
-│   ├── compose.yaml                   # Docker Compose 설정
-│   └── README.md
+│   └── compose.yaml                   # Docker Compose 설정
 │
 └── 📁 AI/                             # 인공지능 모듈 (Python)
     ├── 📁 answer_recognition/         # 답안 인식 시스템
@@ -114,7 +112,7 @@ checkmate/
     │   ├── main.py                    # 메인 실행 파일
     │   ├── config.py                  # 설정 파일
     │   └── answer_key.json            # 정답 키 데이터
-    ├── 📁 신호및시스템-50/            # 테스트 데이터셋
+    ├── 📁 신호및시스템-50/                # 테스트 데이터셋
     ├── 📁 font/                       # 폰트 파일
     ├── app.py                         # Flask 애플리케이션
     ├── recog_test.py                  # 인식 테스트 스크립트
