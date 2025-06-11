@@ -82,14 +82,55 @@
 <br>
 <hr>
 <h2>📁 프로젝트 구조</h2>
-<pre>
-📦 autograde-app/
- ┣ 📂 FRONTEND/     - React.js 기반 앱
- ┣ 📂 BACKEND/      - Spring 서버
- ┣ 📂 AI/     - 객체 탐지 및 OCR 인식 AI 모델
- ┣ 📜 README.md
- ┗ 📜 requirements.txt
-</pre>
+
+```
+checkmate/
+├── 📁 FRONT/                          # 프론트엔드 (React.js)
+│   ├── 📁 src/
+│   │   ├── 📁 components/             # React 컴포넌트
+│   │   ├── 📁 api/                    # API 통신 관련
+│   │   ├── App.js                     # 메인 애플리케이션
+│   │   ├── index.js                   # 엔트리 포인트
+│   │   └── ...
+│   ├── 📁 public/                     # 정적 파일
+│   ├── package.json                   # 프로젝트 의존성
+│   ├── tailwind.config.js            # Tailwind CSS 설정
+│   ├── compose.yml                    # Docker Compose 설정
+│   └── README.md
+│
+├── 📁 BACKEND/                        # 백엔드 (Spring Boot)
+│   ├── 📁 src/
+│   │   ├── 📁 main/                   # 메인 소스 코드
+│   │   └── 📁 test/                   # 테스트 코드
+│   ├── 📁 docker-images/              # Docker 이미지
+│   ├── 📁 gradle/                     # Gradle 래퍼
+│   ├── build.gradle                   # Gradle 빌드 설정
+│   ├── Dockerfile                     # Docker 이미지 빌드 설정
+│   ├── compose.yaml                   # Docker Compose 설정
+│   └── README.md
+│
+└── 📁 AI/                             # 인공지능 모듈 (Python)
+    ├── 📁 answer_recognition/         # 답안 인식 시스템
+    │   ├── 📁 recognition/            # 인식 알고리즘
+    │   ├── 📁 preprocessing/          # 전처리 모듈
+    │   ├── 📁 utils/                  # 유틸리티 함수
+    │   ├── main.py                    # 메인 실행 파일
+    │   ├── config.py                  # 설정 파일
+    │   └── answer_key.json            # 정답 키 데이터
+    ├── 📁 신호및시스템-50/            # 테스트 데이터셋
+    ├── 📁 font/                       # 폰트 파일
+    ├── app.py                         # Flask 애플리케이션
+    ├── recog_test.py                  # 인식 테스트 스크립트
+    └── speed_test.py                  # 성능 테스트 스크립트
+```
+
+### 📋 각 모듈 설명
+
+- **FRONT**: 사용자 인터페이스를 담당하는 React.js 기반 웹 애플리케이션
+- **BACKEND**: RESTful API를 제공하는 Spring Boot 서버  
+- **AI**: 답안지 인식 및 처리를 담당하는 Python 기반 AI 모듈
+
+> 💡 **아키텍처**: 마이크로서비스 구조로 설계되어 각 모듈이 독립적으로 개발 및 배포 가능합니다.
 
 <hr>
 
