@@ -118,4 +118,5 @@ python app.py</code></pre>
 <h2>🔗 관련 링크</h2>
 <ul>
   <li>📹 <a href="https://www.youtube.com/watch?v=8qNEgC5LwGs" target="_blank">CHECKMATE 시연 영상 바로가기</a></li>
+  <li>📘<a href="https://amusing-tartan-c92.notion.site/4-1-1b3c113f95a780adb455fbad85181c14?source=copy_link", target="_blank">CHECKMATE 노션 바로가기</a></li>
 </ul>
