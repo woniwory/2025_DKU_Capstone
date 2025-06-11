@@ -1,6 +1,7 @@
 <h1>🎯 CHECKMATE : 자동 채점 프로그램</h1>
 <p> AI 기반 채점 시스템인 CHECKMATE는 교수자의 채점 부담을 획기적으로 줄이고, 학습자에게 실시간 맞춤형 피드백을 제공합니다.</p>
 <hr>
+<br>
 <div id="team-embers">
   <h2 style="border-bottom: 2px solid #eaecef; padding-bottom: 0.3em;">✨ 팀원 소개</h2>
   <table style="width: 100%; border-collapse: collapse; text-align: center;">
@@ -41,7 +42,7 @@
   </table>
 </div>
 <hr>
-
+<br>
 <h2>✨ 주요 기능</h2>
 <ul>
   <li>웹 기반 채점 플랫폼 (React + Spring Boot)</li>
@@ -50,7 +51,7 @@
   <li>시험별 통계 PDF 및 개인별 채점 결과 ZIP 제공</li>
 </ul>
 <hr>
-
+<br>
 <div id="tech-stack">
   <h2 style="border-bottom: 2px solid #eaecef; padding-bottom: 0.3em;">🛠️ 기술 스택</h2>
   <table style="width: 100%;">
@@ -76,6 +77,7 @@
 </div>
 
 <hr>
+<br>
 <h2>📁 프로젝트 구조</h2>
 <pre>
 📦 autograde-app/
@@ -87,7 +89,7 @@
 </pre>
 
 <hr>
-
+<br>
 <h2>🚀 실행 방법</h2>
 <ol>
   <li>백엔드 서버 실행
@@ -112,7 +114,7 @@ python app.py</code></pre>
 </ol>
 
 <hr>
-
+<br>
 <h2>🔗 관련 링크</h2>
 <ul>
   <li>📹 <a href="https://www.youtube.com/watch?v=8qNEgC5LwGs" target="_blank">CHECKMATE 시연 영상 바로가기</a></li>
