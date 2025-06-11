@@ -120,6 +120,5 @@ python app.py</code></pre>
 
 <h2>🔗 관련 링크</h2>
 <ul>
-  <li>📹 <a href="https://youtu.be/예시링크" target="_blank">시연 영상 바로가기</a></li>
-  <li>📂 <a href="https://github.com/your-team-name/autograde-app" target="_blank">GitHub 저장소</a></li>
+  <li>📹 <a href="https://zrr.kr/uqgarw" target="_blank">CHECKMATE 시연 영상 바로가기</a></li>
 </ul>
