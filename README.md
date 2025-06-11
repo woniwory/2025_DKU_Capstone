@@ -120,5 +120,5 @@ python app.py</code></pre>
 
 <h2>🔗 관련 링크</h2>
 <ul>
-  <li>📹 <a href="https://zrr.kr/uqgarw" target="_blank">CHECKMATE 시연 영상 바로가기</a></li>
+  <li>📹 <a href="https://www.youtube.com/watch?v=8qNEgC5LwGs" target="_blank">CHECKMATE 시연 영상 바로가기</a></li>
 </ul>
